@@ -112,6 +112,8 @@ fn main() {
         println!("cargo:rustc-cfg=cortex_m");
         println!("cargo:rustc-cfg=armv8m");
         println!("cargo:rustc-cfg=armv8m_main");
+    } else if target.starts_with("aarch64") {
+        println!("cargo:rustc-cfg=cortex_a");
     }
 
     if target.ends_with("-eabihf") {

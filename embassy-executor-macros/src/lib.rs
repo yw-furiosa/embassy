@@ -94,6 +94,13 @@ pub fn main_cortex_m(args: TokenStream, item: TokenStream) -> TokenStream {
     main::run(&args.meta, f, main::cortex_m()).unwrap_or_else(|x| x).into()
 }
 
+/// TBU
+#[proc_macro_attribute]
+pub fn main_cortex_a(args: TokenStream, item: TokenStream) -> TokenStream {
+    let args = syn::parse_macro_input!(args as Args);
+    let f = syn::parse_macro_input!(item as syn::ItemFn);
+    main::run(&args.meta, f, main::cortex_m()).unwrap_or_else(|x| x).into()
+}
 /// Creates a new `executor` instance and declares an application entry point for RISC-V spawning the corresponding function body as an async task.
 ///
 /// The following restrictions apply:
